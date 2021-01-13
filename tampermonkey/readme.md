@@ -6,7 +6,7 @@ To use FocusMode you need to first install the Tampermonkey script.
 
 ## Installation
 
-Installing the FocusMode userscript is simple! If your TamperMonkey settings are right, clicking [this link](https://raw.githubusercontent.com/mmccall0813/FocusMode/master/tampermonkey/FocusMode.user.js) should bring up an installation prompt. Once you've installed the script go to the *Tampermonkey dashboard* and edit the FocusMode script. Once in the script editor, set the `blockedpage` and `serverLocation` variables to correspond with your server's information. When you have set the `blockedpage` and `serverLocation` variables you can then set the `enabled` variable to `true`. Now all you need to do is save (File > Save or Ctrl + S) and then start the nodeJS server!
+Installing the FocusMode userscript is simple! Clicking [this link](https://raw.githubusercontent.com/mmccall0813/FocusMode/master/tampermonkey/FocusMode.user.js) should bring up an installation prompt. Once you've installed the script go to the *Tampermonkey dashboard* and edit the FocusMode script. Once in the script editor, set the `blockedpage` and `serverLocation` variables to correspond with your server's information. When you have set the `blockedpage` and `serverLocation` variables you can then set the `enabled` variable to `true`. Now all you need to do is save (File > Save or Ctrl + S) and then start the nodeJS server!
 
 
 ## FAQ
