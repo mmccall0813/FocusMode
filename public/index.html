@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+        <title>FocusMode Personal Web Filter</title>
+    </head>
+    <script>
+    const socket = new WebSocket('ws://localhost:8080');
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const blockedpage = urlParams.get('disallowed-webpage');
+    $("#error").hide()
+    $("#success").hide()
+    window.addEventListener("load", () => {document.getElementById("blocked-page").innerHTML = blockedpage})
+    socket.addEventListener('message', function (event) {
+        const dataJSON = JSON.parse(event.data);
+        if(dataJSON.type == "error"){
+            document.getElementById("error").innerHTML = dataJSON.content;
+            $("#error").fadeIn();
+        }
+        if(dataJSON.type == "success"){
+            document.getElementById("success").innerHTML = "Website whitelisted successfully! Redirecting to original page...";
+            $("#success").fadeIn();
+            setTimeout(function(){window.location.replace(urlParams.get('origin'))}, 2500)
+        }
+    })
+    function whitelist(website){
+        socket.send('{"type":"whitelist","website":"' + website + '"}');
+    }
+
+    </script>
+    <h1>Sorry...</h1>
+    <div>The website <span id="blocked-page"></span> is blocked.</div>
+    <div>If you believe this was a mistake you can <a href="javascript:void(0)" onclick="whitelist(blockedpage)">whitelist it</a> to gain access</div>
+    <div id="error" style="color:crimson;"></div>
+    <div id="success" style="color:green;"></div>
+</html>
