@@ -60,5 +60,5 @@ wss.on('connection', function connection(ws) {
 app.use("/", express.static('public'))
 
 app.listen(ExpressPort, () => {
-  console.log(`Blockscreen lisening on port ${port}`)
+  console.log(`Blockscreen lisening on port ${ExpressPort}`)
 })
