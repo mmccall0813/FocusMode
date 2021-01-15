@@ -4,9 +4,9 @@ A web-filter type application that communicates with your web browser via a user
 
 Uses websockets to communicate between client-server.
 
-Running is incredible simple, all you need to do is run:
+Running is incredible simple, all you need to do is run these commands in the project folder:
 
-```
+```shell
 npm install
 node index.js
 ```
