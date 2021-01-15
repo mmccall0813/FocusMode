@@ -6,7 +6,7 @@ Uses websockets to communicate between client-server.
 
 Running is incredible simple, all you need to do is run these commands in the project folder:
 
-```bash
+```Shell
 npm install
 node index.js
 ```
