@@ -42,7 +42,7 @@ wss.on('connection', function connection(ws) {
         ConsoleLog(dataJSON.website + " was blocked")
     
     }}
-}else if(dataJSON.type = "whitelist"){
+}else if(dataJSON.type == "whitelist"){
     if(databaseJSON[dataJSON.website] == undefined){
     var whitelist = JSON.parse(fs.readFileSync("whitelists.json"))
     whitelist[dataJSON.website] = {allowed:true}
